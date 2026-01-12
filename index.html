@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hazim Mazley - Resume</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #34495e;
+            --accent-color: #3498db;
+            --text-color: #333;
+            --light-text: #666;
+            --bg-color: #f4f7f6;
+            --sidebar-bg: #fff;
+            --content-bg: #fff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            font-size: 14px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 40px auto;
+            background: var(--content-bg);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            min-height: 1000px;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            background-color: var(--sidebar-bg);
+            padding: 40px 30px;
+            border-right: 1px solid #eee;
+        }
+
+        .profile-header {
+            margin-bottom: 0;
+        }
+
+        .name {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+            line-height: 1.2;
+        }
+
+        .role {
+            font-size: 16px;
+            color: var(--accent-color);
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+
+        .contact-info {
+            margin-bottom: 30px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            color: var(--light-text);
+            font-size: 13px;
+        }
+
+        .contact-item i {
+            margin-right: 10px;
+            width: 16px;
+            color: var(--accent-color);
+        }
+
+        .section-title {
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            padding-bottom: 5px;
+            border-bottom: 2px solid var(--accent-color);
+            margin-top: 30px;
+        }
+
+        .sidebar .section-title:first-child {
+            margin-top: 0;
+        }
+
+        .skills-list {
+            list-style: none;
+        }
+
+        .skill-category {
+            margin-bottom: 20px;
+        }
+
+        .skill-category-title {
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: var(--secondary-color);
+            font-size: 13px;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+        }
+
+        .skill-tag {
+            background: #f0f2f5;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            color: var(--secondary-color);
+        }
+
+        .languages-list,
+        .hobbies-list {
+            list-style: none;
+            font-size: 13px;
+            color: var(--light-text);
+        }
+
+        .languages-list li,
+        .hobbies-list li {
+            margin-bottom: 5px;
+        }
+
+        /* Main Content */
+        .main-content {
+            padding: 40px;
+        }
+
+        .summary {
+            margin-bottom: 5px;
+            color: var(--light-text);
+            font-size: 14px;
+        }
+
+        .experience-item {
+            margin-bottom: 15px;
+        }
+
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 10px;
+        }
+
+        .job-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .company {
+            font-weight: 500;
+            color: var(--accent-color);
+        }
+
+        .date {
+            font-size: 13px;
+            color: #888;
+            font-style: italic;
+        }
+
+        .job-details {
+            list-style-type: disc;
+            margin-left: 20px;
+            color: var(--light-text);
+        }
+
+        .job-details li {
+            margin-bottom: 5px;
+        }
+
+        .education-item {
+            margin-bottom: 15px;
+        }
+
+        .degree {
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .school {
+            color: var(--secondary-color);
+        }
+
+        .cgpa {
+            font-size: 13px;
+            color: #888;
+        }
+
+        .reference-item {
+            margin-bottom: 20px;
+        }
+
+        .ref-name {
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .ref-details {
+            font-size: 13px;
+            color: var(--light-text);
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 600px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                border-right: none;
+                border-bottom: 1px solid #eee;
+            }
+        }
+
+        /* Print Styles */
+        @media print {
+            @page {
+                padding-top: 30px;
+                padding-bottom: 30px;
+                margin: 0;
+                size: auto;
+            }
+
+            body {
+                background-color: white;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            .container {
+                display: grid !important;
+                grid-template-columns: 260px 1fr !important;
+                box-shadow: none;
+                margin: 0;
+                width: 100%;
+                max-width: 100%;
+                min-height: 100vh;
+                border: none;
+            }
+
+            .sidebar {
+                background-color: #f9f9f9 !important;
+                height: 100%;
+                min-height: 100vh;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+                border-right: 1px solid #eee !important;
+                padding: 20px 30px !important;
+            }
+
+            .main-content {
+                padding: 20px 40px !important;
+            }
+
+            /* Prevent page breaks within items */
+            .experience-item,
+            .education-item,
+            .reference-item,
+            .skill-category,
+            .languages-list,
+            .hobbies-list {
+                break-inside: avoid;
+                page-break-inside: avoid;
+            }
+
+            /* Consistent margins for all items */
+            .experience-item,
+            .education-item {
+                margin-bottom: 5px;
+            }
+
+            .reference-item,
+            .skill-category {
+                margin-bottom: 10px;
+            }
+
+            .summary {
+                margin-bottom: 5px;
+            }
+
+            .section-title {
+                break-after: avoid;
+                margin-top: 30px;
+                margin-bottom: 15px;
+            }
+
+            .languages-list,
+            .hobbies-list {
+                margin-top: 0;
+            }
+
+            a {
+                text-decoration: none;
+                color: inherit;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <div class="profile-header">
+                <h1 class="name">Hazim Mazley</h1>
+                <div class="role">Web Developer</div>
+            </div>
+
+            <div class="contact-info">
+                <div class="contact-item">
+                    <span>Kajang, Malaysia</span>
+                </div>
+                <div class="contact-item">
+                    <span>hazimmazley@gmail.com</span>
+                </div>
+            </div>
+
+            <div class="section-title">Links</div>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <span><a href="https://www.linkedin.com/in/hazim-mazley-0a49b5175/"
+                            target="_blank">LinkedIn</a></span>
+                </div>
+                <div class="contact-item">
+                    <span><a href="https://github.com/hazim-recursivex" target="_blank">GitHub</a></span>
+                </div>
+            </div>
+
+            <div class="section-title">Skills</div>
+            <ul class="skills-list">
+                <li class="skill-category">
+                    <div class="skill-category-title">Languages & Frameworks</div>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Laravel</span>
+                        <span class="skill-tag">PHP</span>
+                        <span class="skill-tag">React.JS</span>
+                        <span class="skill-tag">MySQL</span>
+                        <span class="skill-tag">SQLite</span>
+                        <span class="skill-tag">HTML/CSS</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">Liquid</span>
+                        <span class="skill-tag">GraphQL</span>
+                    </div>
+                </li>
+                <li class="skill-category">
+                    <div class="skill-category-title">Tools & Workflow</div>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Laragon</span>
+                        <span class="skill-tag">VS Code</span>
+                        <span class="skill-tag">Zed</span>
+                        <span class="skill-tag">Fork</span>
+                        <span class="skill-tag">Sourcetree</span>
+                        <span class="skill-tag">GitHub Actions</span>
+                        <span class="skill-tag">Trello</span>
+                        <span class="skill-tag">Slack</span>
+                        <span class="skill-tag">Papertrail</span>
+                        <span class="skill-tag">HeidiSQL</span>
+                        <span class="skill-tag">Ngrok</span>
+                        <span class="skill-tag">Mailtrap</span>
+                        <span class="skill-tag">Cloudflare</span>
+                        <span class="skill-tag">AWS</span>
+                    </div>
+                </li>
+                <li class="skill-category">
+                    <div class="skill-category-title">Technical Skills</div>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Database Design</span>
+                        <span class="skill-tag">Web Services</span>
+                        <span class="skill-tag">Android Kernel</span>
+                        <span class="skill-tag">Shopify Polaris</span>
+                        <span class="skill-tag">Shopify Function</span>
+                        <span class="skill-tag">Theme Customization</span>
+                        <span class="skill-tag">Coding Standards</span>
+                        <span class="skill-tag">Version Control</span>
+                    </div>
+                </li>
+                <li class="skill-category">
+                    <div class="skill-category-title">AI Tools</div>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Claude AI</span>
+                        <span class="skill-tag">Gemini 3.0</span>
+                    </div>
+                </li>
+            </ul>
+
+            <div class="section-title">Languages</div>
+            <ul class="languages-list">
+                <li>English (Professional)</li>
+                <li>Malay (Native)</li>
+                <li>German (Basic)</li>
+            </ul>
+
+            <div class="section-title">Hobbies</div>
+            <ul class="hobbies-list">
+                <li>Badminton</li>
+                <li>Swimming</li>
+                <li>Gaming</li>
+                <li>Traveling</li>
+            </ul>
+        </aside>
+
+        <main class="main-content">
+            <section>
+                <div class="section-title" style="margin-top: 0;">Summary</div>
+                <p class="summary">
+                    Full-time remote software engineer with extensive experience building, maintaining, and modernizing
+                    workforce and e-commerce (Shopify) systems. Strong background in backend and frontend web
+                    development,
+                    testing, CI/CD, and legacy migrations. Comfortable working in Agile teams and using modern
+                    AI-assisted development tools.
+                </p>
+            </section>
+
+            <section>
+                <div class="section-title">Work Experience</div>
+
+                <div class="experience-item">
+                    <div class="job-header">
+                        <div>
+                            <div class="job-title">Full Stack Web Developer</div>
+                            <div class="company">Recursivex PLT</div>
+                        </div>
+                        <div class="date">Dec 2019 - Present</div>
+                    </div>
+                    <ul class="job-details">
+                        <li>Developed new workforce system features: role management, onboarding workflows, exit
+                            interview forms, mentoring feedback forms, and reporting dashboards.</li>
+                        <li>Built customizable evaluation modules (dynamic question sets, exportable reports) for HR
+                            platforms.</li>
+                        <li>Migrated legacy PHP/Laravel codebases to modern Laravel versions; refactored deprecated
+                            patterns and upgraded internal packages.</li>
+                        <li>Upgraded websites and internal packages; implemented compatibility testing and rollback
+                            strategies.</li>
+                        <li>Migrated monolithic systems to modular codebases to improve maintainability and scalability.
+                        </li>
+                        <li>Implemented GraphQL endpoints alongside REST APIs to reduce overfetching and improve client
+                            flexibility.</li>
+                        <li>Developed and maintained multiple Shopify apps (Tableflow, Bluecart, Kobu, Coly,
+                            Tablemaster): backends, embedded UIs, webhooks, billing integration, and app store
+                            submissions.</li>
+                        <li>Wrote automated tests (PHPUnit) and end-to-end tests (Cypress); integrated test suites into
+                            GitHub Actions CI pipelines.</li>
+                        <li>Performed database schema migrations and optimizations; used HeidiSQL for queries and
+                            administration.</li>
+                        <li>Leveraged AI tools (Gemini 3.0, Claude Sonnet 4.5) to accelerate prototyping, generate
+                            tests, and assist in code review.</li>
+                    </ul>
+                </div>
+
+                <div class="experience-item">
+                    <div class="job-header">
+                        <div>
+                            <div class="job-title">Programmer Intern</div>
+                            <div class="company">Fintech Capital Sdn Bhd</div>
+                        </div>
+                        <div class="date">Feb 2019 - May 2019</div>
+                    </div>
+                    <ul class="job-details">
+                        <li>Develop several features for Payment Gateway website such as notifications and blacklists.
+                        </li>
+                        <li>Implement Access Control Level (ACL) for Payment Gateway Website using Spatie Package.</li>
+                        <li>Layout enhancement for Merchant and Admin modules.</li>
+                        <li>Testing website and bugs fixing.</li>
+                        <li>Programming languages used: Laravel PHP framework, Bootstrap 3 and 4, Javascript (jquery).
+                        </li>
+                        <li>Database used: MySQL.</li>
+                        <li>Repository used: Gitlab.</li>
+                        <li>Tools: Trello.</li>
+                    </ul>
+                </div>
+
+                <div class="experience-item">
+                    <div class="job-header">
+                        <div>
+                            <div class="job-title">IT Internship</div>
+                            <div class="company">Hatimuda Sdn Bhd</div>
+                        </div>
+                        <div class="date">Jan 2016 - June 2016</div>
+                    </div>
+                    <ul class="job-details">
+                        <li>Installed and configured software and hardware.</li>
+                        <li>Assisted with the development of SAINS system.</li>
+                        <li>Maintained current software licenses and patched applications to stay up to date with latest
+                            features.</li>
+                        <li>Set up and maintained tomcat servers.</li>
+                        <li>Developed (SAINS) programs using programming languages such as SQL and jsp.net.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <div class="section-title">Education</div>
+                <div class="education-item">
+                    <div class="degree">Bachelor of Computer Science (Software Engineering) (Hons.)</div>
+                    <div class="school">Universiti Tenaga Nasional (UNITEN)</div>
+                    <div class="date">Oct 2016 - May 2019</div>
+                    <div class="cgpa">Final CGPA: 3.74</div>
+                </div>
+                <div class="education-item">
+                    <div class="degree">Diploma in Electronic and Information Technology</div>
+                    <div class="school">German-Malaysian Institute (GMI)</div>
+                    <div class="date">July 2013 - June 2016</div>
+                    <div class="cgpa">Final CGPA: 3.27</div>
+                </div>
+            </section>
+
+            <section>
+                <div class="section-title">Accomplishments</div>
+                <ul class="job-details" style="margin-left: 0; list-style-position: inside;">
+                    <li><strong>Built for Shopify badge:</strong> Delivered apps (Tableflow, Bluecart and Kobu) that
+                        earned the "Built for Shopify" badge, demonstrating compliance with Shopify review criteria and
+                        high-quality implementation.</li>
+                </ul>
+            </section>
+
+            <section>
+                <div class="section-title">Conferences</div>
+                <ul class="job-details" style="margin-left: 0; list-style-position: inside;">
+                    <li><strong>2016-11:</strong> ICHICA 2016 eRezeki Talk by MDEC</li>
+                </ul>
+            </section>
+
+            <section>
+                <div class="section-title">Courses</div>
+                <ul class="job-details" style="margin-left: 0; list-style-position: inside;">
+                    <li><strong>2018-08:</strong> Mobile Application with Android Studio Workshop (Universiti Tenaga
+                        Nasional)</li>
+                </ul>
+            </section>
+
+            <section>
+                <div class="section-title">References</div>
+                <div class="reference-item">
+                    <div class="ref-name">Dr. HAZLEEN, BINTI ARIS (Senior Lecturer)</div>
+                    <div class="ref-details">Universiti Tenaga Nasional(UNITEN)</div>
+                    <div class="ref-details">03-89212020</div>
+                </div>
+                <div class="reference-item">
+                    <div class="ref-name">Lim Kok, Cheng, Lecturer</div>
+                    <div class="ref-details">Universiti Tenaga Nasional(UNITEN)</div>
+                    <div class="ref-details">KokCheng@uniten.edu.my | 03-89212020</div>
+                </div>
+            </section>
+        </main>
+    </div>
+</body>
+
+</html>
